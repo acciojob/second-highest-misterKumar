@@ -8,40 +8,38 @@
 
 <body>	
 	<script>
-		function secondHighest(arr) 
-		{
-			//Write your code here
-			
-			if(arr.length<2)
-			{
-				return-Infinity;
-			}	
-			else{
-				arr.sort();
-		     	max=arr[arr.length-1];
-	for (let i = arr.length-2; i >=0; i--)
-		  {
-				if(max!==arr[i])
-				return arr[i];
-			
-				
-		  }
-				return -Infinity;
-			
-			    }
-			
+		function secondHighest(arr) {
+		    // set default values for largest and secondLargest
+		    let largest = -Infinity;
+		    let secondLargest = null;
+		
+		    for (let i = 0; i < arr.length; i++) {
+		        // Convert string to number
+		        let num = parseInt(arr[i]);
+		        
+		        // arr[i] > largest and secondLargest
+		        if (num > largest) {
+		            // secondLargest will become largest
+		            secondLargest = largest;
+		            // largest will become arr[i]
+		            largest = num;
+		        } else if (num < largest && (secondLargest === null || num > secondLargest)) {
+		            secondLargest = num;
+		        }
+		    }
+		    return secondLargest;
 		}
 		
-
 		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
-			}
-			alert(secondHighest(arr));
+		    var n = prompt("Enter the number of elements");
+		    var arr = [];
+		    for (var i = 0; i < n; i++) {
+		        arr[i] = prompt("Enter element " + (i+1));
+		    }
+		    alert(secondHighest(arr));
 		}
 		Main();
+
 	</script>
 
     <script type="text/javascript" src="./script.js">
@@ -50,4 +48,3 @@
 </body>
 
 </html>
-
